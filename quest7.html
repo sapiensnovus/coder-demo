@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Tooltip Example</title>
+<style>
+  body {
+    padding:200px;
+  }
+  /* Base styling for the trigger element */
+  [data-tooltip] {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    margin: 20px;
+  }
+
+  /* Hide the tooltip by default */
+  [data-tooltip]:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%; /* Position above the element */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 10;
+    font-size: 14px;
+  }
+
+  /* Create the small arrow pointer */
+  [data-tooltip]:after {
+    content: "";
+    position: absolute;
+    bottom: 115%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 10;
+  }
+
+  /* Show tooltip on hover */
+  [data-tooltip]:hover:before,
+  [data-tooltip]:hover:after {
+    opacity: 1;
+    visibility: visible;
+  }
+</style>
+</head>
+<body>
+
+  <!-- The tooltip text is defined in the data-tooltip attribute -->
+  <span data-tooltip="I am a tooltip!">Hover over me</span>
+
+</body>
+</html>
